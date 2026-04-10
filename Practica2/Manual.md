@@ -110,14 +110,6 @@ La topología fue diseñada en tres niveles lógicos:
 
 ## 5.3 Capturas de la topología
 
-> **Inserte aquí las capturas de pantalla de la topología final en Packet Tracer.**  
-> Se recomienda incluir:
->
-> - Captura general completa
-> - Captura con etiquetas y colores por área
-> - Captura del Core
-> - Captura de un área con switch principal, switch de acceso y PCs
-
 ### 5.3.1 Construcción de la topología (secuencia)
 
 ![Construcción 1](Imagenes/Construccion1.png)
@@ -136,28 +128,6 @@ La topología fue diseñada en tres niveles lógicos:
 ![Construcción 14](Imagenes/Construccion14.png)
 ![Construcción 15](Imagenes/Construccion15.png)
 
-### 5.3.2 Topología final y vistas por área
-
-![Vista general final](Imagenes/PasaAlgosi.png)
-
-**Vistas por área (al menos una por piso/área):**
-
-- Área 1
-    ![Área 1](Imagenes/PCA1.png)
-- Área 2
-    ![Área 2](Imagenes/PCA2.png)
-- Área 3
-    ![Área 3](Imagenes/PCA3.png)
-- Área 4
-    ![Área 4](Imagenes/PCA4.png)
-- Área 5
-    ![Área 5](Imagenes/PCA5.png)
-- Área 6
-    ![Área 6](Imagenes/PCA6.png)
-- Área 7
-    ![Área 7](Imagenes/PCA7.png)
-- Área 8
-    ![Área 8](Imagenes/PCA8.png)
 
 ---
 
@@ -287,7 +257,31 @@ Se utilizó VLSM debido a que las áreas no requieren la misma cantidad de hosts
 | PC1-A8 | Área 8 | 85 | 192.168.76.66 | 255.255.255.224 | 192.168.76.65 |
 | PC2-A8 | Área 8 | 85 | 192.168.76.67 | 255.255.255.224 | 192.168.76.65 |
 
-> **Nota:** En esta implementación no se configuró enrutamiento inter-VLAN, por lo que el gateway se documenta como parte de la tabla IP, aunque la conectividad validada se concentra dentro de la misma VLAN.
+
+- Área 1
+
+    ![Área 1](Imagenes/PCA1.png)
+- Área 2
+
+    ![Área 2](Imagenes/PCA2.png)
+- Área 3
+
+    ![Área 3](Imagenes/PCA3.png)
+- Área 4
+
+    ![Área 4](Imagenes/PCA4.png)
+- Área 5
+
+    ![Área 5](Imagenes/PCA5.png)
+- Área 6
+
+    ![Área 6](Imagenes/PCA6.png)
+- Área 7
+
+    ![Área 7](Imagenes/PCA7.png)
+- Área 8
+
+    ![Área 8](Imagenes/PCA8.png)
 
 ---
 
@@ -409,8 +403,10 @@ write memory
 **Capturas de VTP Client (muestras por capa):**
 
 - Core 2
+
     ![VTP CORE2](Imagenes/CORE2VTP.png)
 - Distribución
+
     ![VTP SW-A1](Imagenes/SWA1VTP.png)
     ![VTP SW-A2](Imagenes/SWA2VTP.png)
     ![VTP SW-A3](Imagenes/SWA3VTP.png)
@@ -419,7 +415,9 @@ write memory
     ![VTP SW-A6](Imagenes/SWA6VTP.png)
     ![VTP SW-A7](Imagenes/SWA7VTP.png)
     ![VTP SW-A8](Imagenes/SWA8VTP.png)
+
 - Acceso
+
     ![VTP SW-A1-ACC1](Imagenes/SWA1ACC1VTP.png)
     ![VTP SW-A1-ACC2](Imagenes/SWA1ACC2VTP.png)
     ![VTP SW-A3-ACC1](Imagenes/SWA3ACC1VTP.png)
@@ -482,14 +480,23 @@ write memory
 **Capturas de VLANs configuradas:**
 
 - VLANs en CORE1
+
     ![VLANs CORE1](Imagenes/VLANCore1.png)
+
 - VLAN 15 (Área 1)
+
     ![VLAN 15](Imagenes/VLAN15.png)
+
 - VLAN 45 (Área 4)
+
     ![VLAN 45](Imagenes/VLAN45.png)
+
 - VLAN 65 (Área 6)
+
     ![VLAN 65](Imagenes/VLAN65.png)
+
 - VLAN 999 (Blackhole)
+
     ![VLAN 999 - 1](Imagenes/VLAN9991.png)
     ![VLAN 999 - 2](Imagenes/VLAN9992.png)
 
@@ -517,9 +524,11 @@ write memory
 **Capturas de enlaces troncales (muestras por capa):**
 
 - Core
+
     ![Trunk CORE1](Imagenes/CORE1Trunk.png)
     ![Trunk CORE2](Imagenes/CORE2Trunk.png)
 - Distribución
+
     ![Trunk SW-A1](Imagenes/SWA1Trunk.png)
     ![Trunk SW-A2](Imagenes/SWA2Trunk.png)
     ![Trunk SW-A3](Imagenes/SWA3Trunk.png)
@@ -529,6 +538,7 @@ write memory
     ![Trunk SW-A7](Imagenes/SWA7Trunk.png)
     ![Trunk SW-A8](Imagenes/SWA8Trunk.png)
 - Acceso
+
     ![Trunk SW-A1-ACC1](Imagenes/SWA1ACC1Trunk.png)
     ![Trunk SW-A1-ACC2](Imagenes/SWA1ACC2Trunk.png)
     ![Trunk SW-A3-ACC1](Imagenes/SWA3ACC1Trunk.png)
@@ -1116,21 +1126,6 @@ write memory
 enable
 configure terminal
 interface range fa0/4 - 24
-switchport mode access
-switchport access vlan 999
-shutdown
-end
-write memory
-```
-
-> **Nota:** En la implementación final se observó que `SW-A5` aún conservaba `Fa0/9` libre en VLAN 1, por lo que debe corregirse adicionalmente si se desea endurecer totalmente la seguridad de puertos no utilizados.
-
-Corrección recomendada:
-
-```plaintext
-enable
-configure terminal
-interface fa0/9
 switchport mode access
 switchport access vlan 999
 shutdown
