@@ -1214,7 +1214,7 @@ Esto es normal y no necesariamente indica error en la topología.
 
 ---
 
-# 22. Validaciones recomendadas para anexar con capturas
+# 22. Validaciones recomendadas
 
 Se recomienda incluir capturas de los siguientes comandos:
 
